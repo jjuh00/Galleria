@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const kuvat = [
     { src: "./kuva_1.jpg", alt: "Kuva täysikuusta" },
-    { src: "./kuva_2.jpg", alt: "Kuva auringonlaskuksta" },
+    { src: "./kuva_2.jpg", alt: "Kuva auringonlaskusta" },
     { src: "./kuva_3.jpg", alt: "Kuva Tsuchinshan-ATLAS komeetasta" },
     { src: "./kuva_4.jpg", alt: "ESP / Gran Canaria. Kuva auringonlaskusta hiekkarannalla" },
     { src: "./kuva_5.jpg", alt: "GR / Crete. Kuva merelle päin" },

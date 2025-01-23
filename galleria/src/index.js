@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Galleria from './galleria.js';
+import Galleria from './galleria';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -8,3 +8,5 @@ root.render(
     <Galleria />
   </React.StrictMode>
 );
+
+

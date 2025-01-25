@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css"; 
 
-const kuvat: {src: string, alt: string}[] = [
+const kuvat: {src: string; alt: string}[] = [
     { src: "./kuva_1.jpg", alt: "Kuva täysikuusta" },
     { src: "./kuva_2.jpg", alt: "Kuva auringonlaskusta" },
     { src: "./kuva_3.jpg", alt: "Kuva Tsuchinshan-ATLAS komeetasta" },
@@ -27,8 +27,66 @@ const kuvat: {src: string, alt: string}[] = [
     { src: "./kuva_23.jpg", alt: "Kuva ravintolan jälkiruoasta" }
 ];
 
-const GalleriaV2 = () => {
-    return (<h1>Moi</h1>);
+const GalleriaV2: React.FC = () => {
+    const [sivu, setSivu] = useState<number>(1);
+    const kuviaSivulla = 4;
+    const sivutYhteensa = Math.ceil(kuvat.length / kuviaSivulla);
+    const alkuIndex = (sivu - 1) * kuviaSivulla; //Määrittelee ensimmäisen sivun
+    const uusinKuva = kuvat.slice(alkuIndex, alkuIndex + kuviaSivulla); //Määrittelee tämänhetkisen kuvan
+
+    //Siirrytään galleriassa seuraavalle sivulle
+    const seuraavaSivu = () => {
+        if (sivu < sivutYhteensa) setSivu(sivu + 1);
+    };
+
+    //Siirrytään galleriassa edelliselle sivulle
+    const edellinenSivu = () => {
+        if (sivu > 1) setSivu(sivu - 1);
+    };
+
+    return (
+        //Otsikon tyylitys
+        <div className="container-fluid px-5">
+            <div className="row">
+                <div className="col">
+                    <div className="bg-primary text-white py-3 mb-4 text-center">
+                        <h1>Kuvagalleria</h1>
+                    </div>
+                </div>
+            </div>
+
+            {/*Kuvien tyylitys. Jos ollaan viimeiselle sivulla, keskitetään sivulla olevat 3 kuvaa*/}
+            <div className={`row g-4 ${sivu === sivutYhteensa && uusinKuva.length < 4 ? "justify-content-center" : ""}`}>
+                {uusinKuva.map((kuva, i) => (
+                    <div key={i} className="col-md-6 col-lg-3">
+                        <div className="card h-100 shadow-sm align-items-center justify-content-center">
+                            <img
+                                src={kuva.src}
+                                alt={kuva.alt}
+                                className="img-fluid border rounded"
+                                style={{ height: "500px", width: "100%", objectFit: "cover" }}
+                            />
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {/*Navigointinappien tyylitys*/}
+            <div className="row mt-4">
+                <div className="col text-center">
+                    <div className="btn-group">
+                        <button className="btn btn-primary" onClick={edellinenSivu} disabled={sivu === 1}>
+                            Edellinen
+                        </button>
+                        <span className="btn btn-secondary">{sivu} / {sivutYhteensa}</span>
+                        <button className="btn btn-primary" onClick={seuraavaSivu} disabled={sivu === sivutYhteensa}>
+                            Seuraava
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default GalleriaV2;

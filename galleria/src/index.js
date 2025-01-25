@@ -5,7 +5,7 @@ import GalleriaV2 from './galleria-v2.tsx';
 
 /*
   Jos haluat Gallerian (JavaScript version) näkyviin, ota import-lause Gallerialle pois kommenteista,
-  ja vaihda <GalleriaV2>-komponentin tilalle <Galleria>-komponentti
+  ja vaihda <GalleriaV2>-komponentin tilalle <Galleria>-komponentti.
 */
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

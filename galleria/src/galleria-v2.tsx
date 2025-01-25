@@ -55,7 +55,7 @@ const GalleriaV2: React.FC = () => {
                 </div>
             </div>
 
-            {/*Kuvien tyylitys. Jos ollaan viimeiselle sivulla, keskitetään sivulla olevat 3 kuvaa*/}
+            {/*Kuvien tyylitys. Jos ollaan viimeiselle sivulla, keskitetään sivulla olevat 3 kuvaa.*/}
             <div className={`row g-4 ${sivu === sivutYhteensa && uusinKuva.length < 4 ? "justify-content-center" : ""}`}>
                 {uusinKuva.map((kuva, i) => (
                     <div key={i} className="col-md-6 col-lg-3">
